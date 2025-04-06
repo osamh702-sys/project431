@@ -18,10 +18,8 @@ body.dark-mode {
 /* Header */
 header {
     height: 80px; /* Smaller header */
-    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Al_jubail.jpg/800px-Al_jubail.jpg') no-repeat center center;
-    background-size: cover;
     backdrop-filter: blur(8px);
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: #333;
     color: #fff;
     padding: 15px 10px; /* Less padding */
     position: relative;
@@ -32,7 +30,7 @@ header {
 }
 
 header h1 {
-    font-size: 18px; /* Smaller font */
+    font-size: 25px; /* Smaller font */
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;

@@ -321,15 +321,17 @@ function changeLanguage(lang) {
 
     const data = translations[lang];
     Object.keys(data).forEach(key => {
-        const element = document.querySelector(`[data-translate="${key}"]`);
-        if (element) {
-            element.textContent = data[key];
-        }
+        if (key === 'dark-mode') return; // Preserve current dark mode icon
+        const elements = document.querySelectorAll(`[data-translate="${key}"]`);
+        elements.forEach(el => {
+            el.textContent = data[key];
+        });
     });
 
     // تغيير اتجاه الصفحة بناءً على اللغة
     document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
     document.documentElement.setAttribute("lang", lang);
+    updateDarkModeToggle();
 }
 
 // Default language setup
@@ -347,12 +349,12 @@ langButtons.forEach(button => {
 const toggleButton = document.getElementById("darkModeToggle");
 const body = document.body;
 
+function updateDarkModeToggle() {
+    toggleButton.textContent = body.classList.contains("dark-mode") ? "🌞" : "🌙";
+}
+
 toggleButton.addEventListener("click", function() {
     body.classList.toggle("dark-mode");
-    if (body.classList.contains("dark-mode")) {
-        toggleButton.textContent = "🌞";  // Change button text to sun (light mode)
-    } else {
-        toggleButton.textContent = "🌙";  // Change button text to moon (dark mode)
-    }
+    updateDarkModeToggle();
 });
 
